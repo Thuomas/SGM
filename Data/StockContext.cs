@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Stock.Models;
+using SGM.Models;
 
 namespace SGM.Data
 {
@@ -15,6 +15,7 @@ namespace SGM.Data
         }
 
         public DbSet<Modelo> Modelo { get; set; } = default!;
-        public DbSet<Stock.Models.Trabajo> Trabajo { get; set; } = default!;
+        public DbSet<SGM.Models.Trabajo> Trabajo { get; set; } = default!;
+        public DbSet<SGM.Models.Observacion> Observacion { get; set; } = default!;
     }
 }

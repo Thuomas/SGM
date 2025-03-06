@@ -338,3 +338,4 @@ D:\SGM\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
 D:\SGM\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
 D:\SGM\obj\Debug\net9.0\SGM.csproj.AssemblyReference.cache
 D:\SGM\obj\Debug\net9.0\SGM.csproj.Up2Date
+D:\SGM\obj\Debug\net9.0\SGM.sourcelink.json

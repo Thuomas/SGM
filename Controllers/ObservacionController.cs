@@ -10,22 +10,22 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class ModeloController : Controller
+    public class ObservacionController : Controller
     {
         private readonly StockContext _context;
 
-        public ModeloController(StockContext context)
+        public ObservacionController(StockContext context)
         {
             _context = context;
         }
 
-        // GET: Modelo
+        // GET: Observacion
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Modelo.ToListAsync());
+            return View(await _context.Observacion.ToListAsync());
         }
 
-        // GET: Modelo/Details/5
+        // GET: Observacion/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace SGM.Controllers
                 return NotFound();
             }
 
-            var modelo = await _context.Modelo
+            var observacion = await _context.Observacion
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (modelo == null)
+            if (observacion == null)
             {
                 return NotFound();
             }
 
-            return View(modelo);
+            return View(observacion);
         }
 
-        // GET: Modelo/Create
+        // GET: Observacion/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Modelo/Create
+        // POST: Observacion/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Descripcion")] Modelo modelo)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,FirmwareVersion,Grabador,NumSerieGrabador,Amp,Bpm,Simulador,NumSerieSimulador,SoftAnalisis")] Observacion observacion)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(modelo);
+                _context.Add(observacion);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(modelo);
+            return View(observacion);
         }
 
-        // GET: Modelo/Edit/5
+        // GET: Observacion/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace SGM.Controllers
                 return NotFound();
             }
 
-            var modelo = await _context.Modelo.FindAsync(id);
-            if (modelo == null)
+            var observacion = await _context.Observacion.FindAsync(id);
+            if (observacion == null)
             {
                 return NotFound();
             }
-            return View(modelo);
+            return View(observacion);
         }
 
-        // POST: Modelo/Edit/5
+        // POST: Observacion/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion")] Modelo modelo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,FirmwareVersion,Grabador,NumSerieGrabador,Amp,Bpm,Simulador,NumSerieSimulador,SoftAnalisis")] Observacion observacion)
         {
-            if (id != modelo.Id)
+            if (id != observacion.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace SGM.Controllers
             {
                 try
                 {
-                    _context.Update(modelo);
+                    _context.Update(observacion);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ModeloExists(modelo.Id))
+                    if (!ObservacionExists(observacion.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace SGM.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(modelo);
+            return View(observacion);
         }
 
-        // GET: Modelo/Delete/5
+        // GET: Observacion/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +124,34 @@ namespace SGM.Controllers
                 return NotFound();
             }
 
-            var modelo = await _context.Modelo
+            var observacion = await _context.Observacion
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (modelo == null)
+            if (observacion == null)
             {
                 return NotFound();
             }
 
-            return View(modelo);
+            return View(observacion);
         }
 
-        // POST: Modelo/Delete/5
+        // POST: Observacion/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var modelo = await _context.Modelo.FindAsync(id);
-            if (modelo != null)
+            var observacion = await _context.Observacion.FindAsync(id);
+            if (observacion != null)
             {
-                _context.Modelo.Remove(modelo);
+                _context.Observacion.Remove(observacion);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ModeloExists(int id)
+        private bool ObservacionExists(int id)
         {
-            return _context.Modelo.Any(e => e.Id == id);
+            return _context.Observacion.Any(e => e.Id == id);
         }
     }
 }
