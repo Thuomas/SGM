@@ -54,7 +54,7 @@ namespace SGM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,FirmwareVersion,Grabador,NumSerieGrabador,Amp,Bpm,Simulador,NumSerieSimulador,SoftAnalisis")] Observacion observacion)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,FirmwareVersion,Grabador,NumSerieGrabador,Simulador,NumSerieSimulador,SoftAnalisis")] Observacion observacion)
         {
             if (ModelState.IsValid)
             {

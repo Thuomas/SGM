@@ -5,8 +5,8 @@ public class Modelo
 
     public string Nombre { get; set; }
 
-    public string Descripcion { get; set; }
+    public string? Descripcion { get; set; }
 
-    public virtual List<Trabajo> Trabajos { get; set;}
+    public virtual List<Trabajo>? Trabajos { get; set;}
 
 }

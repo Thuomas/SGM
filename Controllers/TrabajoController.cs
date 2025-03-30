@@ -48,7 +48,7 @@ namespace SGM.Controllers
         // GET: Trabajo/Create
         public IActionResult Create()
         {
-            ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id","Nombre", "Id");
+            ViewBag.ModeloId = new SelectList(_context.Modelo, "Id","Nombre");
             return View();
         }
 
@@ -59,13 +59,14 @@ namespace SGM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Fecha,OrdenTrabajo,ModeloId,Cantidad")] Trabajo trabajo)
         {
+            ModelState.Remove("Modelo");
             if (ModelState.IsValid)
             {
                 _context.Add(trabajo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Id", trabajo.ModeloId);
+            ViewBag.ModeloId = new SelectList(_context.Modelo, "Id", "Nombre", trabajo.ModeloId);
             return View(trabajo);
         }
 
@@ -82,7 +83,8 @@ namespace SGM.Controllers
             {
                 return NotFound();
             }
-            ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Id", trabajo.ModeloId);
+            //ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Id", trabajo.ModeloId);
+            ViewBag.ModeloId = new SelectList(_context.Modelo, "Id","Nombre");
             return View(trabajo);
         }
 
@@ -97,7 +99,8 @@ namespace SGM.Controllers
             {
                 return NotFound();
             }
-
+                
+            ModelState.Remove("Modelo");
             if (ModelState.IsValid)
             {
                 try
@@ -118,7 +121,8 @@ namespace SGM.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Id", trabajo.ModeloId);
+            //ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Id", trabajo.ModeloId);
+            ViewBag.ModeloId = new SelectList(_context.Modelo, "Id","Nombre");
             return View(trabajo);
         }
 

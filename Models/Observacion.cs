@@ -16,10 +16,15 @@ public class Observacion
     [Display(Name = "N° Serie Grabador")]
     public string NumSerieGrabador { get; set; }
     
-    [Display(Name = "V(mm)/Amp")]
+    /// <summary>
+    /// TO DO: Cuando genere el registro de control, agregar a cada registro 
+    /// la opcion de ocmpletar estos campos si son necesarios
+    /// </summary>
+    /// 
+    /*[Display(Name = "V(mm)/Amp")]
     public double Amp { get; set; }
 
-    public int Bpm { get; set; }
+    public int Bpm { get; set; }*/
 
     public string Simulador  { get; set; }
 
