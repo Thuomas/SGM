@@ -8,5 +8,7 @@ public class Modelo
     public string? Descripcion { get; set; }
 
     public virtual List<Trabajo>? Trabajos { get; set;}
+    
+    public virtual List<ControlEquipo>? ControlEquipos { get; set;}
 
 }

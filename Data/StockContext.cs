@@ -17,5 +17,6 @@ namespace SGM.Data
         public DbSet<Modelo> Modelo { get; set; } = default!;
         public DbSet<SGM.Models.Trabajo> Trabajo { get; set; } = default!;
         public DbSet<SGM.Models.Observacion> Observacion { get; set; } = default!;
+        public DbSet<SGM.Models.ControlEquipo> ControlEquipo { get; set; } = default!;
     }
 }
