@@ -22,10 +22,8 @@ public class Trabajo
 
     public int Cantidad { get; set; }
 
-    //[Display(Name = "Orden de produccion")]
-    //public int OrdenProduccionId { get; set; }
-
-    // public virtual Produccion OrdenProduccion { get; set; }
+    [Display(Name = "Orden de produccion")]
+    public virtual List<Produccion> Producciones { get; set;}
 
     // public  List<EntregasSmt> Entregas { get; set; } 
 
