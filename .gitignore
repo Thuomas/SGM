@@ -11,32 +11,31 @@ obj/
 *.sln.docstates
 *.csproj.user
 
-# Archivos de Visual Studio Code
-.vscode/
-.vscode/*
-
 # Archivos de Visual Studio
 .vs/
 
-# Archivos de base de datos
+# Visual Studio Code
+.vscode/
+
+# Archivos de base de datos (no trackear archivos .db locales)
 *.db
 *.sqlite
 
 # Archivos de registro
 *.log
 
-# Archivos de respaldo
-*.bak
-
 # Archivos temporales
 *.tmp
 *.temp
 
-# Archivos generados por herramientas de pruebas
+# Archivos de respaldo
+*.bak
+
+# Resultados de pruebas
 TestResults/
 *.trx
 
-# Archivos de paquetes NuGet
+# Archivos NuGet
 *.nupkg
 *.snupkg
 packages/
@@ -44,13 +43,9 @@ packages/
 # Archivos de configuración de entorno
 .env
 
-# Archivos de migraciones de Entity Framework Core
-Migrations/
-
-# Archivos de configuración de Rider
+# Rider / JetBrains
 .idea/
-
-# Archivos de configuración de JetBrains
 *.sln.iml
 
+# Archivos generados por herramientas de automatización o compilación
 .fake
