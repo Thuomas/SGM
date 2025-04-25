@@ -1,4 +1,4 @@
-@model SGM.Models.Trabajo
+@model SGM.Models.Entrega
 
 @{
     ViewData["Title"] = "Details";
@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Trabajo</h4>
+    <h4>Entrega</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -17,16 +17,16 @@
             @Html.DisplayFor(model => model.Fecha)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Remito)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Remito)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.OrdenTrabajo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OrdenTrabajo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Modelo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Modelo.Nombre)
+            @Html.DisplayFor(model => model.OrdenTrabajo.Id)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Cantidad)
@@ -34,11 +34,11 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Cantidad)
         </dd>
-        <dt class = "col-sm-2"></dt>
-            @Html.DisplayNameFor(model => model.Entregas)
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadRestante)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Entregas[0].Remito)
+            @Html.DisplayFor(model => model.CantidadRestante)
         </dd>
     </dl>
 </div>

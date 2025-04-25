@@ -20,5 +20,6 @@ namespace SGM.Data
         public DbSet<SGM.Models.ControlEquipo> ControlEquipo { get; set; } = default!;
         public DbSet<SGM.Models.InsumoCritico> InsumoCritico { get; set; } = default!;
         public DbSet<SGM.Models.Produccion> Produccion { get; set; } = default!;
+        public DbSet<SGM.Models.Entrega> Entrega { get; set; } = default!;
     }
 }

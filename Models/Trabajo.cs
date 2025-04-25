@@ -12,9 +12,9 @@ public class Trabajo
     public int Id { get; set; }
     public DateOnly Fecha { get; set; }
 
-    [Display(Name="Orden de Trabajo nº")]
+    [Display(Name = "Orden de Trabajo nº")]
     public string OrdenTrabajo { get; set; }
-    
+
     [Display(Name = "Modelo")]
     public int ModeloId { get; set; }
 
@@ -23,8 +23,9 @@ public class Trabajo
     public int Cantidad { get; set; }
 
     [Display(Name = "Orden de produccion")]
-    public virtual List<Produccion> Producciones { get; set;}
+    public virtual List<Produccion> Producciones { get; set; }
 
-    // public  List<EntregasSmt> Entregas { get; set; } 
+    [Display(Name = "Entregas")]
+    public List<Entrega> Entregas { get; set; }
 
 }

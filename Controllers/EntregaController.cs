@@ -10,23 +10,23 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class TrabajoController : Controller
+    public class EntregaController : Controller
     {
         private readonly StockContext _context;
 
-        public TrabajoController(StockContext context)
+        public EntregaController(StockContext context)
         {
             _context = context;
         }
 
-        // GET: Trabajo
+        // GET: Entrega
         public async Task<IActionResult> Index()
         {
-            var stockContext = _context.Trabajo.Include(t => t.Modelo);
+            var stockContext = _context.Entrega.Include(e => e.OrdenTrabajo);
             return View(await stockContext.ToListAsync());
         }
 
-        // GET: Trabajo/Details/5
+        // GET: Entrega/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,45 +34,43 @@ namespace SGM.Controllers
                 return NotFound();
             }
 
-            var trabajo = await _context.Trabajo
-                .Include(t => t.Modelo)
-                .Include(t => t.Entregas)
+            var entrega = await _context.Entrega
+                .Include(e => e.OrdenTrabajo)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (trabajo == null)
+            if (entrega == null)
             {
                 return NotFound();
             }
 
-            return View(trabajo);
+            return View(entrega);
         }
 
-        // GET: Trabajo/Create
+        // GET: Entrega/Create
         public IActionResult Create()
         {
-            ViewBag.ModeloId = new SelectList(_context.Modelo, "Id","Nombre");
+            ViewData["TrabajoId"] = new SelectList(_context.Trabajo, "Id", "OrdenTrabajo");
             return View();
         }
 
-        // POST: Trabajo/Create
+        // POST: Entrega/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Fecha,OrdenTrabajo,ModeloId,Cantidad")] Trabajo trabajo)
+        public async Task<IActionResult> Create([Bind("Id,Fecha,Remito,TrabajoId,Cantidad,CantidadRestante")] Entrega entrega)
         {
-            ModelState.Remove("Modelo");
-            ModelState.Remove("Producciones");
+            ModelState.Remove("OrdenTrabajo");
             if (ModelState.IsValid)
             {
-                _context.Add(trabajo);
+                _context.Add(entrega);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.ModeloId = new SelectList(_context.Modelo, "Id", "Nombre", trabajo.ModeloId);
-            return View(trabajo);
+            ViewData["TrabajoId"] = new SelectList(_context.Trabajo, "Id", "OrdenTrabajo", entrega.TrabajoId);
+            return View(entrega);
         }
 
-        // GET: Trabajo/Edit/5
+        // GET: Entrega/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,39 +78,37 @@ namespace SGM.Controllers
                 return NotFound();
             }
 
-            var trabajo = await _context.Trabajo.FindAsync(id);
-            if (trabajo == null)
+            var entrega = await _context.Entrega.FindAsync(id);
+            if (entrega == null)
             {
                 return NotFound();
             }
-            //ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Id", trabajo.ModeloId);
-            ViewBag.ModeloId = new SelectList(_context.Modelo, "Id","Nombre");
-            return View(trabajo);
+            ViewData["TrabajoId"] = new SelectList(_context.Trabajo, "Id", "OrdenTrabajo", entrega.TrabajoId);
+            return View(entrega);
         }
 
-        // POST: Trabajo/Edit/5
+        // POST: Entrega/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Fecha,OrdenTrabajo,ModeloId,Cantidad")] Trabajo trabajo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Fecha,Remito,TrabajoId,Cantidad,CantidadRestante")] Entrega entrega)
         {
-            if (id != trabajo.Id)
+            if (id != entrega.Id)
             {
                 return NotFound();
             }
-                
-            ModelState.Remove("Modelo");
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(trabajo);
+                    _context.Update(entrega);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TrabajoExists(trabajo.Id))
+                    if (!EntregaExists(entrega.Id))
                     {
                         return NotFound();
                     }
@@ -123,12 +119,11 @@ namespace SGM.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Id", trabajo.ModeloId);
-            ViewBag.ModeloId = new SelectList(_context.Modelo, "Id","Nombre");
-            return View(trabajo);
+            ViewData["TrabajoId"] = new SelectList(_context.Trabajo, "Id", "OrdenTrabajo", entrega.TrabajoId);
+            return View(entrega);
         }
 
-        // GET: Trabajo/Delete/5
+        // GET: Entrega/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,35 +131,35 @@ namespace SGM.Controllers
                 return NotFound();
             }
 
-            var trabajo = await _context.Trabajo
-                .Include(t => t.Modelo)
+            var entrega = await _context.Entrega
+                .Include(e => e.OrdenTrabajo)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (trabajo == null)
+            if (entrega == null)
             {
                 return NotFound();
             }
 
-            return View(trabajo);
+            return View(entrega);
         }
 
-        // POST: Trabajo/Delete/5
+        // POST: Entrega/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var trabajo = await _context.Trabajo.FindAsync(id);
-            if (trabajo != null)
+            var entrega = await _context.Entrega.FindAsync(id);
+            if (entrega != null)
             {
-                _context.Trabajo.Remove(trabajo);
+                _context.Entrega.Remove(entrega);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TrabajoExists(int id)
+        private bool EntregaExists(int id)
         {
-            return _context.Trabajo.Any(e => e.Id == id);
+            return _context.Entrega.Any(e => e.Id == id);
         }
     }
 }

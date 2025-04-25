@@ -45,6 +45,35 @@ namespace SGM.Migrations
                     b.ToTable("ControlEquipo");
                 });
 
+            modelBuilder.Entity("SGM.Models.Entrega", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CantidadRestante")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateOnly>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Remito")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("TrabajoId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TrabajoId");
+
+                    b.ToTable("Entrega");
+                });
+
             modelBuilder.Entity("SGM.Models.InsumoCritico", b =>
                 {
                     b.Property<int>("Id")
@@ -189,6 +218,17 @@ namespace SGM.Migrations
                     b.Navigation("Modelo");
                 });
 
+            modelBuilder.Entity("SGM.Models.Entrega", b =>
+                {
+                    b.HasOne("SGM.Models.Trabajo", "OrdenTrabajo")
+                        .WithMany("Entregas")
+                        .HasForeignKey("TrabajoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OrdenTrabajo");
+                });
+
             modelBuilder.Entity("SGM.Models.Produccion", b =>
                 {
                     b.HasOne("SGM.Models.Modelo", "Modelo")
@@ -228,6 +268,8 @@ namespace SGM.Migrations
 
             modelBuilder.Entity("SGM.Models.Trabajo", b =>
                 {
+                    b.Navigation("Entregas");
+
                     b.Navigation("Producciones");
                 });
 #pragma warning restore 612, 618
