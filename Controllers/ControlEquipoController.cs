@@ -83,7 +83,7 @@ namespace SGM.Controllers
             {
                 return NotFound();
             }
-            ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Id", controlEquipo.ModeloId);
+            ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Nombre", controlEquipo.ModeloId);
             return View(controlEquipo);
         }
 
@@ -99,6 +99,7 @@ namespace SGM.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("Modelo");
             if (ModelState.IsValid)
             {
                 try
@@ -119,7 +120,7 @@ namespace SGM.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Id", controlEquipo.ModeloId);
+            ViewData["ModeloId"] = new SelectList(_context.Modelo, "Id", "Nombre", controlEquipo.ModeloId);
             return View(controlEquipo);
         }
 
