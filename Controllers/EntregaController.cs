@@ -22,7 +22,9 @@ namespace SGM.Controllers
         // GET: Entrega
         public async Task<IActionResult> Index()
         {
-            var stockContext = _context.Entrega.Include(e => e.OrdenTrabajo);
+            var stockContext = _context.Entrega
+            .Include(e => e.OrdenTrabajo)
+            .ThenInclude(ot => ot.Modelo);
             return View(await stockContext.ToListAsync());
         }
 

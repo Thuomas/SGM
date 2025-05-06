@@ -9,7 +9,7 @@ public class Observacion
     public string Nombre { get; set; }
 
     [Display(Name = "Version de firmware")]
-    public int FirmwareVersion { get; set; }
+    public string FirmwareVersion { get; set; }
     
     public string Grabador { set; get; }
 
@@ -32,6 +32,6 @@ public class Observacion
     public int NumSerieSimulador { get; set; }
 
     [Display(Name = "Software de analisis")]
-    public int SoftAnalisis { get; set; }
+    public string SoftAnalisis { get; set; }
 
 }

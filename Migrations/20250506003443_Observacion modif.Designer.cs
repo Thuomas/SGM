@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SGM.Data;
 
@@ -10,9 +11,11 @@ using SGM.Data;
 namespace SGM.Migrations
 {
     [DbContext(typeof(StockContext))]
-    partial class StockContextModelSnapshot : ModelSnapshot
+    [Migration("20250506003443_Observacion modif")]
+    partial class Observacionmodif
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
@@ -120,9 +123,8 @@ namespace SGM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("FirmwareVersion")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<float>("FirmwareVersion")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("Grabador")
                         .IsRequired()
@@ -143,9 +145,8 @@ namespace SGM.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SoftAnalisis")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<float>("SoftAnalisis")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
