@@ -16,10 +16,7 @@
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Lote)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observacion)
+                @Html.DisplayNameFor(model => model.Descripcion)
             </th>
             <th></th>
         </tr>
@@ -31,10 +28,7 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Lote)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observacion)
+                @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

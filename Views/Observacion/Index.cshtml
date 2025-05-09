@@ -16,30 +16,8 @@
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirmwareVersion)
+                @Html.DisplayNameFor(model => model.Descripcion)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grabador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumSerieGrabador)
-            </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.Amp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bpm)
-            </th> *@
-            <th>
-                @Html.DisplayNameFor(model => model.Simulador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumSerieSimulador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SoftAnalisis)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -49,28 +27,7 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirmwareVersion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Grabador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumSerieGrabador)
-            </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.Amp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bpm)
-            </td> *@
-            <td>
-                @Html.DisplayFor(modelItem => item.Simulador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumSerieSimulador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoftAnalisis)
+                @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

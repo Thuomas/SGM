@@ -54,7 +54,7 @@ namespace SGM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Lote,Observacion")] InsumoCritico insumoCritico)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Descripcion")] InsumoCritico insumoCritico)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace SGM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Lote,Observacion")] InsumoCritico insumoCritico)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion")] InsumoCritico insumoCritico)
         {
             if (id != insumoCritico.Id)
             {
