@@ -9,6 +9,8 @@ public class InsumoCritico
     public string Nombre { get; set; }
     
     public string Descripcion { get; set; }
+    
+    public DateOnly Fecha { get; set; }
 
     /// <summary>
     /// TODO cuando genere los Registros de Control, hacer que tenga una lista de Registros de Control

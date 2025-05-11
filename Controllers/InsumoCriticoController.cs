@@ -56,8 +56,10 @@ namespace SGM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Descripcion")] InsumoCritico insumoCritico)
         {
+            ModelState.Remove("Fecha");
             if (ModelState.IsValid)
             {
+                insumoCritico.Fecha = DateOnly.FromDateTime(DateTime.Now) ;
                 _context.Add(insumoCritico);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -86,7 +88,7 @@ namespace SGM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion")] InsumoCritico insumoCritico)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion,Fecha")] InsumoCritico insumoCritico)
         {
             if (id != insumoCritico.Id)
             {

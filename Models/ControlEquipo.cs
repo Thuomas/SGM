@@ -1,4 +1,9 @@
 namespace SGM.Models;
+
+    /// <summary>
+    /// Listado de controles realizados a los equipos
+    /// y quien es el responsable de los mismos
+    /// </summary>
 public class ControlEquipo
 {
     public int Id { get; set; }
